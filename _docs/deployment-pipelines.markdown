@@ -15,7 +15,11 @@ A build on continuousphp always follows a particular scheme. At the beginning of
 * a *deployment* package, that will be deployed if all your (blocking) tests are successful
 
 When the *testing* package is finished, the tests will start, whether or not the deployment package is ready. In turn, when the *deployment* package is ready, but not the
-(blocking) tests, the Deployment will wait for the results to see if the build can be deployed. Take a look at the following illustration to get a clearer view :
+(blocking) tests, the Deployment will wait for the results to see if the build can be deployed.
+
+The tests and deployments are automatically parallelized on all chosen PHP versions and destinations.
+
+Take a look at the following illustration to get a clearer view :
 
 ![workflow](/assets/doc/deployment-pipelines/workflow.png)
 
