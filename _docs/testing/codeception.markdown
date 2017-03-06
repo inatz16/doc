@@ -76,6 +76,8 @@ You can specify tasks to be executed before running the tests. This can be very 
 
 ## Code Coverage
 
+### Configuration
+
 continuousphp automatically generates the code coverage of your Codeception tests. To accelerate the build, continuousphp runs the tests in two different, *parallel* activities. One having the code coverage disabled, and the other one with XDebug and code coverage enabled. The final (optional) deployment starts as soon as the tests without coverage are finished and successful.
 
 To define what parts of your application should be tested, you can use Codeception's whitelist/blacklist mechanism in your *codeception.yml* file:
@@ -91,7 +93,10 @@ coverage:
             - vendor/*
 ```
 
-For more information on how to configure Codeception, please check out the [documentation](http://codeception.com/docs/01-Introduction).
+### Deploy only if Code Coverage is high enough
+
+You can choose to deploy only if the Code Coverage, calculated during the Build, is high enough. To enable this feature, go to the Codeception settings in your Pipeline
+and set a value for the *Required Coverage (%)* (integer value between 0 and 100).
 
 ## Remote Code Coverage
 
@@ -133,3 +138,7 @@ of the pipeline configuration), open the Codeception configuration and add one o
 Environment Variables can (optionally) be encrypted. Pay attention that, once a variable is encrypted, you can no longer obtain
 it's value. An encrypted Environment Variable can only be decrypted during a build by continuousphp's workers. Encrypted
 Environment Variables will be masked in the build output.
+
+## Configuration
+
+For more information on how to configure Codeception, please check out the [documentation](http://codeception.com/docs/01-Introduction).

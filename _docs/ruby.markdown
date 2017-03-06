@@ -3,7 +3,7 @@ layout:         doc-toc
 title:          "Ruby Versions - Documentation"
 category:       "ruby"
 logo:           ruby
-order:          12
+order:          13
 excerpt:        "Ruby versions supported by continuousphp."
 ---
 continuousphp supports several Ruby versions.

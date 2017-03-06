@@ -3,7 +3,7 @@ layout:         doc-toc
 title:          "Credentials & Authentication - Documentation"
 category:       "credentials-authentication"
 logo:           credentials-authentication
-order:          8
+order:          9
 excerpt:        "Credentials & Authentication types supported by continuousphp."
 ---
 continuousphp supports several types of Credentials and Authentication methods.

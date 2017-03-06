@@ -3,7 +3,7 @@ layout:         doc-toc
 title:          "Composer - Documentation"
 category:       "composer"
 logo:           composer
-order:          3
+order:          4
 excerpt:        "Dependency management with Composer."
 ---
 [Composer](https://getcomposer.org/) is a tool for dependency management in PHP. It allows you to declare the libraries
