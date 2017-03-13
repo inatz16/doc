@@ -515,8 +515,8 @@ An organization collection
             "organizations": [
               {
                 "organizationId": 2,
-                "login": "continuousphp",
-                "name": "Continuous S.A.",
+                "name": "continuousphp",
+                "displayName": "Continuous S.A.",
                 "avatarUrl": "https://avatars.githubusercontent.com/u/4239735?v=3",
                 "created": "2010-01-01T00:00:00+01:00",
                 "_embedded": {
@@ -548,12 +548,12 @@ An organization collection
           "page": 1
         }
 
-## Organization [/api/organizations/{provider}%2F{login}]
+## Organization [/api/organizations/{provider}%2F{name}]
 An organization details
 
 + Parameters
   + provider: `git-hub` (string, required) - `provider` of the organization
-  + login: `continuousphp` (string, required) - `login` of the organization on its specific provider
+  + name: `continuousphp` (string, required) - `login` or `username` of the organization on its specific provider
 
 ### Get an Organization [GET]
 (upcoming feature)
@@ -564,8 +564,8 @@ An organization details
         
         {
             "organizationId": 2,
-            "login": "continuousphp",
-            "name": "Continuous S.A.",
+            "name": "continuousphp",
+            "displayName": "Continuous S.A.",
             "avatarUrl": "https://avatars.githubusercontent.com/u/4239735?v=3",
             "created": "2010-01-01T00:00:00+01:00",
             "_embedded": {
