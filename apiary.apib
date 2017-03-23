@@ -484,6 +484,84 @@ The Terms & Conditions Acceptance collection.
             }
         }
 
+
+
+# Group Providers
+A provider is a VCS provider (ie: GitHub, Bitbucket, GitLab...).
+To Sign in continuousphp, you need to sign in with one of them.
+It is actually used to retrieve your repository list and your authorizations.
+
+## Provider [/api/providers/{provider_key}{?includeTempCredentials}]
+A single Provider resource with all its details.
+
++ Parameters
+    + provider_key: `git-hub` (string, required) - The unique key that represents the concerned Git Server on continuousphp.
+    + includeTempCredentials: `0` (integer, optional) - Only necessary if the provider uses OAuth 1. It includes into the provider the temporary credentials needed for 3-legged OAuth 1.
+
+### Retrieve a Provider [GET]
++ Request GitHub Provider (application/hal+json)
+    + Parameters
+        + provider_key: `git-hub`
+
++ Response 200 (application/hal+json)
+
+        {
+          "providerId": 1,
+          "uniqueIdentifier": "git-hub",
+          "url": "https:\/\/api.github.com",
+          "baseUrl": "https:\/\/github.com",
+          "name": "GitHub",
+          "type": "git-hub",
+          "_links": {
+            "self": {
+              "href": "https:\/\/api.continuousphp.com\/api\/providers\/1"
+            }
+          }
+        }
+
++ Request Bitbucket Provider (application/hal+json)
+    + Parameters
+        + provider_key: `bitbucket`
+
++ Response 200 (application/hal+json)
+
+        {
+          "providerId": 3,
+          "uniqueIdentifier": "bitbucket",
+          "url": "https:\/\/bitbucket.org",
+          "baseUrl": "https:\/\/bitbucket.org",
+          "name": "Bitbucket",
+          "type": "bitbucket",
+          "tempOAuthToken": "",
+          "_links": {
+            "self": {
+              "href": "https:\/\/api.continuousphp.com\/api\/providers\/3"
+            }
+          }
+        }
+
++ Request GitLab Provider (application/hal+json)
+    + Parameters
+        + provider_key: `git-lab`
+
++ Response 200 (application/hal+json)
+
+        {
+          "providerId": 4,
+          "uniqueIdentifier": "git-lab",
+          "url": "https:\/\/gitlab.com",
+          "baseUrl": "https:\/\/gitlab.com",
+          "name": "GitLab.com",
+          "type": "git-lab",
+          "clientId": null,
+          "_links": {
+            "self": {
+              "href": "https:\/\/api.continuousphp.com\/api\/providers\/4"
+            }
+          }
+        }
+
+
 # Group Organizations
 
 ## Organization Collection [/api/organizations{?user_id}]
@@ -493,7 +571,6 @@ An organization collection
   + user_id: `2` (string, optional) - `userid` member of the organizations to return
 
 ### Get an Organization Collection [GET]
-(upcoming feature)
 
 + Request (application/hal+json)
 
@@ -556,7 +633,6 @@ An organization details
   + name: `continuousphp` (string, required) - `login` or `username` of the organization on its specific provider
 
 ### Get an Organization [GET]
-(upcoming feature)
 
 + Request (application/hal+json)
 
@@ -1877,32 +1953,6 @@ A single Build resource with all its details.
             "_links": {
                 "self": {
                     "href": "https:\/\/api.continuousphp.com\/api\/projects\/git-hub%2Fcontinuousphptest%2Fcphp-test1\/builds\/aaaa-1111-bbbb-2222-cccc-3333"
-                }
-            }
-        }
-
-# Group Providers
-Retrieve **providers**.
-
-## Provider [/api/providers/{provider_key}{?includeTempCredentials}]
-A single Build resource with all its details.
-
-+ Parameters
-    + provider_key (required, string, `my-git-server-key`) ... The unique key that represents the concerned Git Server on continuousphp.
-    + includeTempCredentials (optional, integer, `1`) ... Only necessary if the provider uses OAuth 1. It includes into the provider the temporary credentials needed for 3-legged OAuth 1.
-
-### Retrieve a Provider [GET]
-+ Response 200 (application/hal+json)
-
-        {
-            "providerId": 205,
-            "name": "The Provider's name",
-            "uniqueIdentifier": "my-git-server",
-            "url": "https:\/\/api.github.com",
-            "type": "git-hub",
-            "_links": {
-                "self": {
-                    "href": "https:\/\/api.continuousphp.com\/api\/providers\/205"
                 }
             }
         }
