@@ -14,7 +14,7 @@ We are very pleased to announce that continuousphp now support GitLab repository
 
 <!--more-->
 
-GitLab is a well-known repository hosting platform. We had many users who asked for its integration with continuousphp. So [here](/projects/) it is! 
+GitLab is a well-known repository hosting platform. We had many users who asked for its integration with continuousphp. So [here](https://app.continuousphp.com) it is! 
 
 If you are already logged in with a different repository provider, and want to use GitLab, logout and login again. 
 

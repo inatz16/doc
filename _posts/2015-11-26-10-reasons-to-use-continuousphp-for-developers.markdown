@@ -115,7 +115,7 @@ categories: news
   <div class="small-12 medium-3 medium-centered columns">
     <br><br>
     <p class="text--center">Check it out for yourself:</p>
-    <a href="/projects"
+    <a href="https://app.continuousphp.com"
        title="Start using for FREE"
        analytics-on
        analytics-event="Start using"
