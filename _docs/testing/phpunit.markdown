@@ -28,7 +28,7 @@ As for all other testing frameworks on continuousphp, you can choose if the test
 
 ## Executing tasks
 
-You can specify tasks to be executed before running the tests. This can be very useful to initialize external resources like [databases](/documentation/databases) or third-party services. Currently continuousphp supports [Phing](https://www.phing.info/), but others will be supported soon (shell commands, ...). However, PHPUnit is *unit testing* and it is not recommended using external resources like databases during the tests. After all, you are testing the smallest parts ("units") of your application and not entire uses cases. And you don't want your tests to fail because a third-party isn't available, right?
+You can specify tasks to be executed before running the tests. This can be very useful to initialize external resources like [databases](/documentation/databases) or third-party services. Currently continuousphp supports [Phing](https://www.phing.info/), but others will be supported soon (shell commands, ...). However, PHPUnit is *unit testing* and it is not recommended using external resources like databases during the tests. After all, you are testing the smallest parts ("units") of your application and not entire uses cases. And you don't want your tests to fail because a third-party service isn't available, right?
 
 **IMPORTANT:** Tasks can be defined at different places in your workflow:
 
@@ -40,9 +40,11 @@ You can specify tasks to be executed before running the tests. This can be very 
 
 ## Code Coverage
 
+### Configuration
+
 continuousphp automatically generates the code coverage of your PHPUnit tests. To accelerate the build, continuousphp runs the tests in two different, *parallel* activities. One having the code coverage disabled, and the other one with XDebug and code coverage enabled. The final (optional) deployment starts as soon as the tests without coverage are finished and successful.
 
-To define what parts of your application should be tested, you can use PHPUnit's whitelist mechanism in your *phpunit.xml* file:
+To define what parts of your application should be tested, you can use PHPUnit's whitelisting mechanism in your *phpunit.xml* file:
 
 ```xml
 <testsuites>
@@ -61,7 +63,10 @@ To define what parts of your application should be tested, you can use PHPUnit's
 </filter>
 ```
 
-For more information on how to configure PHPUnit, please check out the PHPUnit's [documentation](https://phpunit.de/manual/current/en/appendixes.configuration.html).
+### Deploy only if Code Coverage is high enough
+
+You can choose to deploy only if the Code Coverage, calculated during the Build, is high enough. To enable this feature, go to the PHPUnit settings in your Pipeline
+and set a value for the *Required Coverage (%)* (integer value between 0 and 100).
 
 ## php.ini
 
@@ -94,3 +99,7 @@ of the pipeline configuration), open the PHPUnit configuration and add one or mo
 Environment Variables can (optionally) be encrypted. Pay attention that, once a variable is encrypted, you can no longer obtain
 it's value. An encrypted Environment Variable can only be decrypted during a build by continuousphp's workers. Encrypted
 Environment Variables will be masked in the build output.
+
+## Documentation
+
+For more information on how to configure PHPUnit, please check out the PHPUnit's [documentation](https://phpunit.de/manual/current/en/appendixes.configuration.html).
