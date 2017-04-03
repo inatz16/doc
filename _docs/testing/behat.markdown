@@ -91,7 +91,7 @@ default:
   extensions:
     Behat\MinkExtension:
       browser_name: chrome
-      base_url: http://localhost
+      base_url: http://apache24
       sessions:
         default:
           selenium2:
@@ -145,7 +145,7 @@ default:
         - Behat\MinkExtension\Context\MinkContext
   extensions:
     Behat\MinkExtension:
-      base_url: http://localhost
+      base_url: http://apache24
       sessions:
         default:
           selenium2:
