@@ -32,7 +32,7 @@ sudo rsync -avz /opt/solr/search_api_solr/solr-conf/5.x/ /opt/solr/server/solr/d
 
 <target name="restart-solr">
    <exec dir="${project.basedir}"
-         command="sudo /opt/solr/bin/solr restart"
+         command="sudo supervisorctl restart solr5"
          checkreturn="true"
          passthru="true"
          spawn="true"/>
@@ -40,7 +40,7 @@ sudo rsync -avz /opt/solr/search_api_solr/solr-conf/5.x/ /opt/solr/server/solr/d
 
 <target name="solr-status">
    <exec dir="${project.basedir}"
-         command="sudo /opt/solr/bin/solr status"
+         command="sudo supervisorctl status solr5"
          checkreturn="true"
          passthru="true"/>
 </target>
