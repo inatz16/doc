@@ -5,17 +5,19 @@ category:       "browser-ui-testing"
 order:          2
 excerpt:        "Selenium Server support by continuousphp"
 ---
-continuousphp supports UI Testing with the [Selenium Standalone Server](http://www.seleniumhq.org/).
-
-<div class="row panel callout warning clearfix">
-  <h2 class="left"><i class="fa fa-exclamation-triangle"></i></h2>
-  continuousphp uses the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">official Selenium Server/Chrome Docker image</a>. No need to install it yourself!
-</div>
+The [Selenium Standalone Server](http://www.seleniumhq.org/) is supported by continuousphp. It uses the [official Selenium Standalone Server Docker images](https://hub.docker.com/r/selenium/standalone-chrome/).
 
 ## Installation & Usage
-The Selenium Standalone Server and Chrome are available in every activity on continuousphp. Check Selenium's
-[documentation](https://github.com/SeleniumHQ/selenium/wiki/Grid2) or our examples for more information:
 
-Check our documentation pages for examples:
+Selenium Server containers are available for each activity in your build. To enable one of them, simply add the environment
+variable `CPHP_SERVICE_SELENIUM` with the desired Selenium Server version as value to your pipeline configuration and use
+`http://selenium` as it's hostname. Available versions are :
+
+* ***3.6.0-copper***
+* ***3.4.0-chromium***
+
+
+
+Check Selenium's [documentation](https://github.com/SeleniumHQ/selenium/wiki/Grid2) or our examples for more information:
 
 * [UI Testing with Behat, Selenium & Chrome](/documentation/testing/behat#ui-testing-with-selenium-and-chrome)

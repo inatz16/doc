@@ -10,7 +10,7 @@ excerpt:        "MongoDB support by continuousphp"
 ## Specification 
 
 MongoDB containers are available for each activity in your build. To enable one of them, simply add one of the following
-environment variables with an arbitrary value in your pipeline configuration:
+environment variables in your pipeline configuration:
 
 * ***CPHP_SERVICE_MONGO_24*** (latest 2.4.x)
 * ***CPHP_SERVICE_MONGO_3*** (latest 3.x)
@@ -27,7 +27,7 @@ Our PHP testing containers implement both the `mongo` and `mongodb` extensions.
 
 ## Connecting to MongoDB
 
-Like the mongoDB run into a dedicated container, each version have a specific local domain.
+Because MongoDB runs in a dedicated container, each version has a specific local domain :
 
 <table>
   <tr>

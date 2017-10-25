@@ -2,33 +2,40 @@
 layout:         doc
 title:          "PostgreSQL - Documentation"
 category:       "databases"
-order:          2
+order:          3
 excerpt:        "PostgreSQL support by continuousphp"
 ---
-[PostgreSQL](http://www.postgresql.org/) is supported by continuousphp containers.
+[PostgreSQL](http://www.postgresql.org/) is supported by continuousphp. It uses the [official PostgreSQL Docker images](https://hub.docker.com/_/postgres/).
 
-## Specification 
+## Specification
 
-Our containers run PostgreSQL 9.5 including common and contrib package with the following PHP extensions:
+PostgreSQL containers are available for each activity in your build. To enable one of them, simply add the environment
+variable `CPHP_SERVICE_POSTGRESQL` with the desired PostgreSQL version as value to your pipeline configuration. Available versions are :
+
+* ***10.0.0***
+* ***9.6.5***
+* ***9.5.9***
+
+E.g. if you need `PostgreSQL 9.6.5` in your Behat tests, go to the Testing Settings (step 2 of the Pipeline) and add the
+environment variable `CPHP_SERVICE_POSTGRESQL = 9.6.5` to the Behat configuration.
+
+### PHP Extensions
+
+Our containers implement the following PHP extensions for PostgreSQL :
 
 * pdo_pgsql
 * pgsql
 
 ## Connecting to PostgreSQL
 
-Host, authentication and default database settings:
-
 <table>
   <tr>
-    <td>host:</td><td>localhost</td> 
+    <td>Hostname</td><td>postgres</td>
   </tr>
   <tr>
-    <td>database:</td><td>postgres</td> 
+    <td>Username</td><td>postgres</td>
   </tr>
   <tr>
-    <td>username:</td><td>postgres</td> 
-  </tr>
-  <tr>
-    <td>password:</td><td>&lt;blank&gt;</td>
+    <td>Password</td><td>password</td>
   </tr>
 </table>
