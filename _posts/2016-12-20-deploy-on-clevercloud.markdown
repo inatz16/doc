@@ -39,7 +39,7 @@ So let's start and create a Clever-Cloud application for your testing environmen
 7. Type in the name of your application: **demo-zf-apigility-phinx**, and choose the region that suits your needs.
 8. Select **MySQL** as your database
 9. Fill in the name of your MySQL addon: **mysql-demo-zf-apigility-phinx**, and choose the zone that suits your needs.
-10. Upload your public SSH key, then click add
+10. Upload your public [SSH key](https://www.clever-cloud.com/doc/admin-console/ssh-keys/), then click add
 11. Keep the environment variables, then click next
 12. Fork the [Sample Application](https://github.com/continuousdemo/clevercloud-demo-zf-apigility-phinx) 
 13. Take note of the git remote & push command and run them to add the clever remote repository in order to deploy the Application for the first time
@@ -47,6 +47,7 @@ So let's start and create a Clever-Cloud application for your testing environmen
 15. Go to Application Information and take a note of the deployment URL.
 
 **IMPORTANT:** Now let's remove the git remote repository. We don't want that any push triggers a deployment. It's continuousphp that will deploy it after having tested and packaged the application.
+For information, the demo application still use an old hook, don't hesitate too look at the [clever cloud documentation about it](https://www.clever-cloud.com/doc/clever-cloud-overview/hooks/#-hooks-postdeploy-is-deprecated).
 
 ```bash
 git remote rm clever
@@ -99,7 +100,7 @@ These are key files to set up your application installation, testing and deploym
 1. In the Build Settings (Step 1):
    1. In the **PHP VERSIONS**, select the PHP versions: **5.6** / **7.0**
    2. Add the SSH private Key for the public key you uploaded in your clever application settings
-      * Name: id_rsa
+      * Name: demo-clever-ssh-key
       * Private SSH Key: Your private key
 2. In the Test Settings (Step 2):
    1. continuousphp automatically discovers that you have a `behat.yml` and `phpunit.xml` in your repository and creates the testing configuration for you.
@@ -126,25 +127,28 @@ These are key files to set up your application installation, testing and deploym
 # Print the Package Path and untar the package builded by continuousphp
 echo $PACKAGE_PATH
 
-# Untar the continuousphp package
+# Untar the continuousphp package inside a custome directory "clevercloud-demo-zf-apigility-phinx"
 mkdir ./clevercloud-demo-zf-apigility-phinx
 tar xzf $PACKAGE_PATH -C ./clevercloud-demo-zf-apigility-phinx
 
+cd clevercloud-demo-zf-apigility-phinx
+
 # Removing .git and removing composer, or clevercloud will run a composer update in production
-cd ./clevercloud-demo-zf-apigility-phinx && rm -rf .git && rm composer.json composer.lock && rm .gitignore
+rm -rf .git && rm composer.json composer.lock && rm .gitignore
 
 # Initialise Git
-cd ./clevercloud-demo-zf-apigility-phinx && git init && git config --global user.email "cphp_build@example.com" && git config --global user.name "cphp_build" && git add -A
+git init && git config --global user.email "cphp_build@example.com" && git config --global user.name "cphp_build" && git add -A
+# Let git use the specific ssh key. "demo-clever-ssh-key" corresponding to the name you defined earlier with the private ssh key
+git config core.sshCommand "ssh -i /home/cphp/.ssh/demo-clever-ssh-key.key -F /dev/null"
 
 # Commit
-cd ./clevercloud-demo-zf-apigility-phinx && git commit -m "Removing composer files" --quiet
+git commit -m "Removing composer files" --quiet
 
 # Add the clever git remote repository with Deployment URL
-cd ./clevercloud-demo-zf-apigility-phinx && git remote add clever git+ssh://git@push-par-clevercloud-customers.services.clever-cloud.com/app_aeac2554-a390-4995-bb78-86c86b8b1c39.git
+git remote add clever git+ssh://git@push-par-clevercloud-customers.services.clever-cloud.com/app_aeac2554-a390-4995-bb78-86c86b8b1c39.git
 
 # Move the private key so git push can use it
-mv /home/cphp/.ssh/id_rsa.key /home/cphp/.ssh/id_rsa
-cd ./clevercloud-demo-zf-apigility-phinx && git push -f -u clever master
+git push -f -u clever master
 ```
 
 ## Deploy the app
@@ -170,7 +174,8 @@ Now, everytime you push to the develop branch, your develop pipeline is triggere
 
 ## Notes
 
-* This tutorial is an example and should not be used as is for production use. 
+* This tutorial is using an example application and should not be used as is for production use.
 * A big Thank you to [Stéphane Jouvray](https://github.com/stephanejouvray) from [Interact-IV](http://www.interact-iv.com/) for the Apigility/ZF skeleton.
+* If you use composer dependency that are not stable, and where the .git directory will still present, it will not deployed. In this case, remove the .git directory.
 
 If you like to know more about production configuration or have questions about this tutorial, don't hesitate to contact us using the chat button!

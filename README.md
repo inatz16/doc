@@ -10,6 +10,12 @@ This is the official documentation of the continuousphp platform.
 3. Install dependencies ``` bundle install ```
 4. Run Jekyll ``` jekyll serve ```
 
+### Using docker
+
+```bash
+docker run -i -t -v $PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch
+```
+
 ## Comments
 
 In order to have a better experience, the stylesheets from the webapp is loaded.
