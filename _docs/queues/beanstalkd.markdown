@@ -21,6 +21,9 @@ environment variable `CPHP_SERVICE_BEANSTALKD = 1.10.0` to the Behat configurati
 
 <table>
   <tr>
+    <td>Host</td><td>beanstalkd</td>
+  </tr>
+  <tr>
     <td>Port</td><td>11300</td>
   </tr>
 </table>
