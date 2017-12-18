@@ -3,7 +3,7 @@ layout:         doc-toc
 title:          "Environment Variables - Documentation"
 category:       "environment-variables"
 logo:           environment-variables
-order:          20
+order:          21
 excerpt:        "Support for Environment Variables by continuousphp."
 ---
 continuousphp supports using environment variables at every stage of your builds :

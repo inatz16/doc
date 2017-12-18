@@ -9,3 +9,4 @@
 .idea
 grunt-aws.json
 _includes/*.local.html
+npm-debug.log
