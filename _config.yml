@@ -39,3 +39,5 @@ defaults:
     values:
       layout: "default"
       comments: true
+
+theme: jekyll-theme-cayman
